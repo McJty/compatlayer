@@ -1,0 +1,16 @@
+[
+{
+  "modid": "compatlayer",
+  "name": "compatlayer",
+  "description": "Compatibility layer to make migrating between different vanilla/forge versions easier",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["McJty"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
