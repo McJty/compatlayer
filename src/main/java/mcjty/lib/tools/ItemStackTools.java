@@ -73,6 +73,16 @@ public class ItemStackTools {
     }
 
     /**
+     * Check if this is an empty stack. Tests for null on 1.10.
+     */
+    public static boolean isEmpty(@Nullable ItemStack stack) {
+        if (stack == null) {
+            return true;
+        }
+        return stack.stackSize <= 0;
+    }
+
+    /**
      * Load an ItemStack from NBT.
      */
     @Nullable
