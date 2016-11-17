@@ -104,15 +104,15 @@ task("uploadJars", dependsOn: "reobf") {
                         project {
                             name project.archivesBaseName
                             packaging 'jar'
-                            description 'McJtyLib'
+                            description 'CompatLayer'
                             scm {
-                                url 'https://github.com/McJty/McJtyLib'
-                                connection 'scm:git:git@github.com:McJty/McJtyLib.git'
-                                developerConnection 'scm:git:git@github.com:McJty/McJtyLib.git'
+                                url 'https://github.com/McJty/CompatLayer'
+                                connection 'scm:git:git@github.com:McJty/CompatLayer.git'
+                                developerConnection 'scm:git:git@github.com:McJty/CompatLayer.git'
                             }
                             issueManagement {
                                 system 'github'
-                                url 'https://github.com/McJty/McJtyLib/issues'
+                                url 'https://github.com/McJty/CompatLayer/issues'
                             }
                             licenses {
                                 license {
