@@ -15,4 +15,8 @@ public class WorldTools {
     public static void neighborChanged(World world, EnumFacing offset, Block block, BlockPos pos) {
         world.neighborChanged(pos.offset(offset), block, pos);
     }
+
+    public static void notifyNeighborsOfStateChange(World world, BlockPos pos, Block block) {
+        world.notifyNeighborsOfStateChange(pos, block, false);
+    }
 }
