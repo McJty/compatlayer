@@ -82,6 +82,10 @@ public class ItemStackTools {
         return stack.stackSize <= 0;
     }
 
+    public static void makeEmpty(@Nonnull ItemStack stack) {
+        stack.stackSize = 0;
+    }
+
     /**
      * Load an ItemStack from NBT.
      */
