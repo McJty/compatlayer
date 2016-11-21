@@ -8,7 +8,7 @@ import javax.annotation.Nonnull;
 public class ChatTools {
 
     public static void addChatMessage(@Nonnull EntityPlayer player, @Nonnull ITextComponent component) {
-        player.addChatComponentMessage(component, false);
+        player.sendStatusMessage(component, false);
     }
 
 }

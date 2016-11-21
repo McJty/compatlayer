@@ -15,7 +15,7 @@ public class ItemStackTools {
      */
     @Nonnull
     public static ItemStack incStackSize(@Nonnull ItemStack stack, int amount) {
-        stack.func_190917_f(amount);
+        stack.grow(amount);
         return stack;
     }
 
@@ -34,7 +34,7 @@ public class ItemStackTools {
         if (stack == null) {
             return 0;
         }
-        return stack.func_190916_E();
+        return stack.getCount();
     }
 
     /**
@@ -44,9 +44,9 @@ public class ItemStackTools {
     @Nonnull
     public static ItemStack setStackSize(@Nonnull ItemStack stack, int amount) {
         if (amount <= 0) {
-            return ItemStack.field_190927_a;
+            return ItemStack.EMPTY;
         }
-        stack.func_190920_e(amount);
+        stack.setCount(amount);
         return stack;
     }
 
@@ -57,7 +57,7 @@ public class ItemStackTools {
         if (stack == null) {
             return false;
         }
-        return !stack.func_190926_b();
+        return !stack.isEmpty();
     }
 
     /**
@@ -67,7 +67,7 @@ public class ItemStackTools {
         if (stack == null) {
             return true;
         }
-        return stack.func_190926_b();
+        return stack.isEmpty();
     }
 
     /**
@@ -80,7 +80,7 @@ public class ItemStackTools {
 
     @Nonnull
     public static ItemStack getEmptyStack() {
-        return ItemStack.field_190927_a;
+        return ItemStack.EMPTY;
     }
 
 }

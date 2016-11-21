@@ -5,7 +5,7 @@ import net.minecraft.inventory.ISidedInventory;
 public interface CompatSidedInventory extends ISidedInventory {
 
     @Override
-    default boolean func_191420_l() {
+    default boolean isEmpty() {
         return false;
     }
 
