@@ -26,7 +26,7 @@ public class CompatItem extends Item {
         return clOnItemUse(player, world, pos, hand, facing, hitX, hitY, hitZ);
     }
 
-    private EnumActionResult clOnItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+    protected EnumActionResult clOnItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         return super.onItemUse(player, world, pos, hand, facing, hitX, hitY, hitZ);
     }
 }
