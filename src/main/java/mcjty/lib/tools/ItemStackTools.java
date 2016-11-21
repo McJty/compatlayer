@@ -70,6 +70,10 @@ public class ItemStackTools {
         return stack.isEmpty();
     }
 
+    public static void makeEmpty(@Nonnull ItemStack stack) {
+        stack.setCount(0);
+    }
+
     /**
      * Load an ItemStack from NBT.
      */
