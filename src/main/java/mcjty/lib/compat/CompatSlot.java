@@ -1,4 +1,4 @@
-package mcjty.lib.block;
+package mcjty.lib.compat;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;

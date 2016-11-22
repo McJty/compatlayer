@@ -1,4 +1,4 @@
-package mcjty.lib.block;
+package mcjty.lib.compat;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
