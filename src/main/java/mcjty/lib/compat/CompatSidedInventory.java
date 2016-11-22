@@ -1,9 +1,9 @@
-package mcjty.lib.inventory;
+package mcjty.lib.compat;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.ISidedInventory;
 
-public interface CompatInventory extends IInventory {
+public interface CompatSidedInventory extends ISidedInventory {
 
     boolean isUsable(EntityPlayer player);
 
@@ -11,6 +11,5 @@ public interface CompatInventory extends IInventory {
     default boolean isUseableByPlayer(EntityPlayer player) {
         return isUsable(player);
     }
-
 
 }
