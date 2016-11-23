@@ -32,4 +32,8 @@ public class WorldTools {
     public static <T extends WorldSavedData> T loadData(World world, Class<? extends T> clazz, String dataID) {
         return (T) world.loadData(clazz, dataID);
     }
+
+    public static <T extends WorldSavedData> void saveData(World world, String dataID, T data) {
+        world.setData(dataID, data);
+    }
 }
