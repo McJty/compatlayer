@@ -20,4 +20,20 @@ public class CompatSlot extends Slot {
     public void onPickupFromSlot(EntityPlayer player, ItemStack stack) {
         onPickup(player, stack);
     }
+
+    public static int getX(Slot slot) {
+        return slot.xDisplayPosition;
+    }
+
+    public static int getY(Slot slot) {
+        return slot.yDisplayPosition;
+    }
+
+    public static void setX(Slot slot, int x) {
+        slot.xDisplayPosition = x;
+    }
+
+    public static void setY(Slot slot, int y) {
+        slot.yDisplayPosition = y;
+    }
 }
