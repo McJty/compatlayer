@@ -7,6 +7,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
@@ -30,11 +32,13 @@ public class CompatItem extends Item {
         return super.onItemUse(player, world, pos, hand, facing, hitX, hitY, hitZ);
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
     public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
         clGetSubItems(itemIn, tab, subItems);
     }
 
+    @SideOnly(Side.CLIENT)
     protected void clGetSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems) {
         super.getSubItems(itemIn, tab, (NonNullList<ItemStack>) subItems);
     }
