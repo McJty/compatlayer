@@ -4,7 +4,6 @@ import net.minecraft.item.ItemStack;
 import org.apache.commons.lang3.Validate;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,26 +12,23 @@ import java.util.List;
 public class ItemStackList extends AbstractList<ItemStack> {
 
     private final List<ItemStack> delegate;
-    private final ItemStack defaultStack;
 
     public static ItemStackList create() {
         return new ItemStackList();
     }
 
-    public static ItemStackList withSize(int size, ItemStack fill) {
-        Validate.notNull(fill);
+    public static ItemStackList create(int size) {
         ItemStack[] aobject = new ItemStack[size];
-        Arrays.fill(aobject, fill);
-        return new ItemStackList(Arrays.asList(aobject), fill);
+        Arrays.fill(aobject, null);
+        return new ItemStackList(Arrays.asList(aobject));
     }
 
     protected ItemStackList() {
-        this(new ArrayList<>(), ItemStackTools.getEmptyStack());
+        this(new ArrayList<>());
     }
 
-    protected ItemStackList(List<ItemStack> delegateIn, @Nullable ItemStack stack) {
+    protected ItemStackList(List<ItemStack> delegateIn) {
         this.delegate = delegateIn;
-        this.defaultStack = stack;
     }
 
     @Nonnull
@@ -58,13 +54,4 @@ public class ItemStackList extends AbstractList<ItemStack> {
         return this.delegate.size();
     }
 
-    public void clear() {
-        if (this.defaultStack == null) {
-            super.clear();
-        } else {
-            for (int i = 0; i < this.size(); ++i) {
-                this.set(i, this.defaultStack);
-            }
-        }
-    }
 }

@@ -35,4 +35,7 @@ public class WorldTools {
         return (T) world.loadItemData(clazz, dataID);
     }
 
+    public static <T extends WorldSavedData> void saveData(World world, String dataID, T data) {
+        world.setItemData(dataID, data);
+    }
 }
