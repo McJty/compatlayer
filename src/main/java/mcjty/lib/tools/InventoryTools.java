@@ -1,6 +1,7 @@
 package mcjty.lib.tools;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
@@ -35,5 +36,9 @@ public class InventoryTools {
 
     public static List<ItemStack> getRemainingItems(IRecipe recipe, InventoryCrafting inventoryCrafting) {
         return recipe.getRemainingItems(inventoryCrafting);
+    }
+
+    public static List<ItemStack> getContainerItemStacks(Container container) {
+        return container.inventoryItemStacks;
     }
 }
