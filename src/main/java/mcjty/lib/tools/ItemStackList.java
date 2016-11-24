@@ -1,7 +1,6 @@
 package mcjty.lib.tools;
 
 import net.minecraft.item.ItemStack;
-import org.apache.commons.lang3.Validate;
 
 import javax.annotation.Nonnull;
 import java.util.AbstractList;
@@ -37,12 +36,10 @@ public class ItemStackList extends AbstractList<ItemStack> {
     }
 
     public ItemStack set(int idx, ItemStack stack) {
-        Validate.notNull(stack);
         return this.delegate.set(idx, stack);
     }
 
     public void add(int idx, ItemStack stack) {
-        Validate.notNull(stack);
         this.delegate.add(idx, stack);
     }
 
