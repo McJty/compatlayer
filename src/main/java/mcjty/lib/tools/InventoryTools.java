@@ -13,6 +13,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 
 public class InventoryTools {
@@ -25,7 +26,7 @@ public class InventoryTools {
         return slot.onTake(player, stack);
     }
 
-    public static EnumActionResult onItemUseWithStack(Item item, ItemStack stack, EntityPlayer player,
+    public static EnumActionResult onItemUseWithStack(Item item, @Nonnull ItemStack stack, EntityPlayer player,
                                                       World world, BlockPos pos, EnumHand hand, EnumFacing facing,
                                                       float hitX, float hitY, float hitZ) {
         player.setHeldItem(hand, stack);

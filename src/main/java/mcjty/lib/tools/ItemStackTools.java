@@ -30,10 +30,7 @@ public class ItemStackTools {
     /**
      * Get the stacksize from a stack
      */
-    public static int getStackSize(@Nullable ItemStack stack) {
-        if (stack == null) {
-            return 0;
-        }
+    public static int getStackSize(@Nonnull ItemStack stack) {
         return stack.getCount();
     }
 
@@ -53,20 +50,14 @@ public class ItemStackTools {
     /**
      * Check if this is a valid stack. Tests for null on 1.10.
      */
-    public static boolean isValid(@Nullable ItemStack stack) {
-        if (stack == null) {
-            return false;
-        }
+    public static boolean isValid(@Nonnull ItemStack stack) {
         return !stack.isEmpty();
     }
 
     /**
      * Check if this is an empty stack. Tests for null on 1.10.
      */
-    public static boolean isEmpty(@Nullable ItemStack stack) {
-        if (stack == null) {
-            return true;
-        }
+    public static boolean isEmpty(@Nonnull ItemStack stack) {
         return stack.isEmpty();
     }
 
@@ -77,7 +68,7 @@ public class ItemStackTools {
     /**
      * Load an ItemStack from NBT.
      */
-    @Nullable
+    @Nonnull
     public static ItemStack loadFromNBT(@Nonnull NBTTagCompound nbt) {
         return new ItemStack(nbt);
     }
