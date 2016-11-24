@@ -2,7 +2,6 @@ package mcjty.lib.tools;
 
 import net.minecraft.item.ItemStack;
 
-import javax.annotation.Nonnull;
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,7 +29,6 @@ public class ItemStackList extends AbstractList<ItemStack> {
         this.delegate = delegateIn;
     }
 
-    @Nonnull
     public ItemStack get(int idx) {
         return this.delegate.get(idx);
     }
