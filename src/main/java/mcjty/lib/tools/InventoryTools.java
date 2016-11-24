@@ -2,6 +2,7 @@ package mcjty.lib.tools;
 
 import com.google.common.collect.Lists;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
@@ -38,4 +39,7 @@ public class InventoryTools {
         return Lists.newArrayList(recipe.getRemainingItems(inventoryCrafting));
     }
 
+    public static List<ItemStack> getContainerItemStacks(Container container) {
+        return container.inventoryItemStacks;
+    }
 }
