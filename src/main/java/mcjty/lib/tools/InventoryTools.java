@@ -7,6 +7,7 @@ import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
@@ -36,6 +37,10 @@ public class InventoryTools {
 
     public static List<ItemStack> getRemainingItems(IRecipe recipe, InventoryCrafting inventoryCrafting) {
         return recipe.getRemainingItems(inventoryCrafting);
+    }
+
+    public static List<ItemStack> getRemainingItems(InventoryCrafting workInventory, World world) {
+        return CraftingManager.getInstance().getRemainingItems(workInventory, world);
     }
 
     public static List<ItemStack> getContainerItemStacks(Container container) {
