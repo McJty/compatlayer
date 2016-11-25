@@ -10,6 +10,8 @@ import java.util.List;
 
 public class ItemStackList extends NonNullList<ItemStack> {
 
+    public static final ItemStackList EMPTY = ItemStackList.create(0);
+
     public static ItemStackList create(int size) {
         Validate.notNull(ItemStackTools.getEmptyStack());
         ItemStack[] aobject = new ItemStack[size];
