@@ -27,7 +27,7 @@ public interface CompatCommand extends ICommand {
     List<String> getAliases();
 
     @Override
-    default List getCommandAliases() {
+    default List<String> getCommandAliases() {
         return getAliases();
     }
 
