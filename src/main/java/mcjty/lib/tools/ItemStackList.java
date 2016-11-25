@@ -9,6 +9,8 @@ import java.util.List;
 
 public class ItemStackList extends AbstractList<ItemStack> {
 
+    public static final ItemStackList EMPTY = ItemStackList.create(0);
+
     private final List<ItemStack> delegate;
 
     public static ItemStackList create() {

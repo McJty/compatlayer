@@ -1,7 +1,11 @@
 package mcjty.lib.tools;
 
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -99,4 +103,60 @@ public class ItemStackTools {
         return null;
     }
 
+    /**
+     * Extract itemstack out of a slot and return a new stack.
+     * Supports both IItemHandler as IInventory
+     * @param tileEntity
+     * @param slot
+     * @param amount
+     */
+    @Nullable
+    public static ItemStack extractItem(@Nullable TileEntity tileEntity, int slot, int amount) {
+        if (tileEntity != null && tileEntity.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)) {
+            IItemHandler capability = tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+            return capability.extractItem(slot, amount, false);
+        } else if (tileEntity instanceof IInventory) {
+            IInventory inventory = (IInventory) tileEntity;
+            return inventory.decrStackSize(slot, amount);
+        }
+        return ItemStackTools.getEmptyStack();
+    }
+
+    /**
+     * Get an item from an inventory
+     * Supports both IItemHandler as IInventory
+     * @param tileEntity
+     * @param slot
+     */
+    @Nullable
+    public static ItemStack getStack(@Nullable TileEntity tileEntity, int slot) {
+        if (tileEntity != null && tileEntity.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)) {
+            IItemHandler capability = tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+            return capability.getStackInSlot(slot);
+        } else if (tileEntity instanceof IInventory) {
+            IInventory inventory = (IInventory) tileEntity;
+            return inventory.getStackInSlot(slot);
+        }
+        return ItemStackTools.getEmptyStack();
+    }
+
+    /**
+     * Set a stack in a specific slot. This will totally replace whatever was in the slot before
+     * Supports both IItemHandler as IInventory. Does not check for failure
+     * @param tileEntity
+     * @param slot
+     * @param stack
+     */
+    public static void setStack(@Nullable TileEntity tileEntity, int slot, @Nullable ItemStack stack) {
+        if (tileEntity != null && tileEntity.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)) {
+            IItemHandler capability = tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+            capability.extractItem(slot, 64, false);        // Clear slot
+            if (stack != null) {
+                capability.insertItem(slot, stack, false);
+            }
+        } else if (tileEntity instanceof IInventory) {
+            IInventory inventory = (IInventory) tileEntity;
+            inventory.setInventorySlotContents(slot, stack);
+        }
+    }
 }
