@@ -5,7 +5,9 @@ import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.EntityStray;
 import net.minecraft.entity.monster.EntityWitherSkeleton;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.datafix.fixes.EntityId;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
@@ -14,6 +16,23 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import java.lang.reflect.InvocationTargetException;
 
 public class EntityTools {
+
+    private static final EntityId FIXER = new EntityId();
+
+    /**
+     * This method attempts to fix an old-style (1.10.2) entity Id and convert it to the
+     * string representation of the new ResourceLocation. The 1.10 version of this function will just return
+     * the given id
+     * This does not work for modded entities.
+     * @param id an old-style entity id as used in 1.10
+     * @return
+     */
+    public static String fixEntityId(String id) {
+        NBTTagCompound nbt = new NBTTagCompound();
+        nbt.setString("id", id);
+        nbt = FIXER.fixTagCompound(nbt);
+        return nbt.getString("id");
+    }
 
     public static String findEntityNameByClass(Class<? extends EntityLiving> clazz) {
         ResourceLocation key = EntityList.getKey(clazz);

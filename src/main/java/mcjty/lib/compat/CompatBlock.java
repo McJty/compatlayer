@@ -3,6 +3,7 @@ package mcjty.lib.compat;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
@@ -17,6 +18,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class CompatBlock extends Block {
@@ -71,4 +74,7 @@ public class CompatBlock extends Block {
         return block.onBlockActivated(world, pos, state, player, hand, facing, hitX, hitY, hitZ);
     }
 
+    public static Collection<IProperty<?>> getPropertyKeys(IBlockState state) {
+        return state.getPropertyKeys();
+    }
 }
