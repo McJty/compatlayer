@@ -37,4 +37,8 @@ public abstract class CompatCommandBase extends CommandBase {
     public String getCommandUsage(ICommandSender sender) {
         return getUsage(sender);
     }
+
+    public static boolean canUseCommand(ICommandSender sender, int permLevel, String name) {
+        return sender.canCommandSenderUseCommand(permLevel, name);
+    }
 }
