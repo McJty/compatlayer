@@ -20,4 +20,9 @@ public class MathTools {
     public static int clamp(int num, int min, int max) {
         return num < min ? min : (num > max ? max : num);
     }
+
+    public static double clamp(double lowerBnd, double upperBnd, double slide) {
+        return slide < 0.0D ? lowerBnd : (slide > 1.0D ? upperBnd : lowerBnd + (upperBnd - lowerBnd) * slide);
+    }
+
 }
