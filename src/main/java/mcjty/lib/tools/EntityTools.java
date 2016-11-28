@@ -34,10 +34,23 @@ public class EntityTools {
         return nbt.getString("id");
     }
 
-    public static String findEntityNameByClass(Class<? extends EntityLiving> clazz) {
+    public static String findEntityNameByClass(Class<? extends Entity> clazz) {
         ResourceLocation key = EntityList.getKey(clazz);
         return key == null ? null : key.toString();
     }
+
+    public static String findEntityUnlocNameByClass(Class<? extends Entity> clazz) {
+        ResourceLocation key = EntityList.getKey(clazz);
+        if (key == null) {
+            return null;
+        }
+        EntityEntry value = ForgeRegistries.ENTITIES.getValue(key);
+        if (value == null) {
+            return null;
+        }
+        return value.getName();
+    }
+
 
     public static Class<? extends Entity> findClassByName(String name) {
         EntityEntry entry = ForgeRegistries.ENTITIES.getValue(new ResourceLocation(name));
