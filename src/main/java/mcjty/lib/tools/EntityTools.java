@@ -14,6 +14,10 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class EntityTools {
 
@@ -49,6 +53,15 @@ public class EntityTools {
             return null;
         }
         return value.getName();
+    }
+
+    /**
+     * Return a stream of all registered entities. The strings returned are string representations
+     * of the resource location on 1.11 and entity names on 1.10.
+     */
+    public static Stream<String> getEntities() {
+        Set<ResourceLocation> keys = ForgeRegistries.ENTITIES.getKeys();
+        return keys.stream().map(s -> s.toString());
     }
 
 
