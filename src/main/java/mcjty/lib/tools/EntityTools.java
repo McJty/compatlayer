@@ -10,6 +10,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.stream.Stream;
 
 public class EntityTools {
 
@@ -33,6 +34,16 @@ public class EntityTools {
     public static String findEntityUnlocNameByClass(Class<? extends Entity> clazz) {
         return EntityList.CLASS_TO_NAME.get(clazz);
     }
+
+    /**
+     * Return a stream of all registered entities. The strings returned are string representations
+     * of the resource location on 1.11 and entity names on 1.10.
+     */
+    public static Stream<String> getEntities() {
+        return EntityList.NAME_TO_CLASS.keySet().stream();
+    }
+
+
 
     public static Class<? extends Entity> findClassByName(String name) {
         return EntityList.NAME_TO_CLASS.get(name);
