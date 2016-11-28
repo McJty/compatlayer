@@ -26,7 +26,11 @@ public class EntityTools {
     }
 
 
-    public static String findEntityNameByClass(Class<? extends EntityLiving> clazz) {
+    public static String findEntityNameByClass(Class<? extends Entity> clazz) {
+        return EntityList.CLASS_TO_NAME.get(clazz);
+    }
+
+    public static String findEntityUnlocNameByClass(Class<? extends Entity> clazz) {
         return EntityList.CLASS_TO_NAME.get(clazz);
     }
 
