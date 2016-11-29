@@ -3,9 +3,11 @@ package mcjty.lib.tools;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.SkeletonType;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
@@ -27,10 +29,17 @@ public class EntityTools {
     }
 
 
-    public static String findEntityNameByClass(Class<? extends Entity> clazz) {
+    /**
+     * On 1.11: return the string representation of the ResourceLocation that belongs with the entity class
+     * On 1.10: return the entity name
+     */
+    public static String findEntityIdByClass(Class<? extends Entity> clazz) {
         return EntityList.CLASS_TO_NAME.get(clazz);
     }
 
+    /**
+     * Return the unlocalized name based by class.
+     */
     public static String findEntityUnlocNameByClass(Class<? extends Entity> clazz) {
         return EntityList.CLASS_TO_NAME.get(clazz);
     }
@@ -43,12 +52,45 @@ public class EntityTools {
         return EntityList.NAME_TO_CLASS.keySet().stream();
     }
 
-
-
-    public static Class<? extends Entity> findClassByName(String name) {
-        return EntityList.NAME_TO_CLASS.get(name);
+    /**
+     * Get the localized name of an entity based on class
+     */
+    public static String findEntityLocNameByClass(Class<? extends Entity> clazz) {
+        return I18n.translateToLocal(EntityList.CLASS_TO_NAME.get(clazz));
     }
 
+    /**
+     * Return the entity name (localized name)
+     */
+    public static String getEntityName(Entity entity) {
+        if (entity instanceof EntitySkeleton && ((EntitySkeleton) entity).getSkeletonType() == SkeletonType.WITHER) {
+            return "Wither Skeleton";
+        }
+        if (entity instanceof EntitySkeleton && ((EntitySkeleton) entity).getSkeletonType() == SkeletonType.STRAY) {
+            return "Stray Skeleton";
+        }
+        if (entity instanceof EntityPigZombie) {
+            return "Zombie Pigman";
+        }
+        return entity.getName();
+    }
+
+
+    /**
+     * Find the entity class based on the given ID. On 1.11 this ID should be
+     * a string representation of the ResourceLocation for that entity. On 1.10 it
+     * should be the name of that entity. In any case, the resuilt of fixEntityID()
+     * should work as input.
+     */
+    public static Class<? extends Entity> findClassById(String id) {
+        return EntityList.NAME_TO_CLASS.get(id);
+    }
+
+    /**
+     * Create an entity given a mobId. On 1.11 this should be the string representation of
+     * the ResourceLocation for that entity. On 1.10 the entity name. In either case the
+     * result of fixEntityId will work.
+     */
     public static EntityLiving createEntity(World world, String mobId) {
         Class<? extends Entity> clazz;
         if ("WitherSkeleton".equals(mobId)) {
@@ -56,7 +98,7 @@ public class EntityTools {
         } else if ("StraySkeleton".equals(mobId)) {
             clazz = EntitySkeleton.class;
         } else {
-            clazz = findClassByName(mobId);
+            clazz = findClassById(mobId);
         }
         EntityLiving entityLiving = null;
         try {
@@ -81,7 +123,11 @@ public class EntityTools {
         return entityLiving;
     }
 
-    public static String findName(Class<? extends Entity> clazz, Entity entity) {
+    /**
+     * Given the class of an entity returns the mobId. On 1.10 this correctly
+     * works with wither and stray skeletons by using the provided entity
+     */
+    public static String findId(Class<? extends Entity> clazz, Entity entity) {
         if (entity instanceof EntitySkeleton) {
             EntitySkeleton skeleton = (EntitySkeleton) entity;
             if (skeleton.getSkeletonType() == SkeletonType.WITHER) {
