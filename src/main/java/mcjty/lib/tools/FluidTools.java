@@ -2,6 +2,7 @@ package mcjty.lib.tools;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -29,5 +30,17 @@ public class FluidTools {
 
     public static boolean isFilledContainer(@Nonnull ItemStack itemStack) {
         return FluidContainerRegistry.isFilledContainer(itemStack);
+    }
+
+    // Drain a fluid container and return an empty container
+    public static ItemStack drainContainer(@Nonnull ItemStack container) {
+        return FluidContainerRegistry.drainFluidContainer(container);
+    }
+
+    /**
+     * Get the capacity (in mb) of the given container for the given fluid
+     */
+    public static int getCapacity(@Nonnull FluidStack fluidStack, @Nonnull ItemStack itemStack) {
+        return FluidContainerRegistry.getContainerCapacity(fluidStack, itemStack);
     }
 }
