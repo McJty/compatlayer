@@ -37,6 +37,11 @@ public class FluidTools {
         return FluidContainerRegistry.drainFluidContainer(container);
     }
 
+    // Fill a container with a fluid and return the filled container
+    public static ItemStack fillContainer(@Nonnull FluidStack fluidStack, @Nonnull ItemStack itemStack) {
+        return FluidContainerRegistry.fillFluidContainer(fluidStack, itemStack);
+    }
+
     /**
      * Get the capacity (in mb) of the given container for the given fluid
      */
