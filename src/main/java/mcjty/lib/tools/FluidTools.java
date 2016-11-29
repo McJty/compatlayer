@@ -84,4 +84,36 @@ public class FluidTools {
 
         return true;
     }
+
+    // Drain a fluid container and return an empty container
+    public static ItemStack drainContainer(@Nonnull ItemStack container) {
+        ItemStack empty = container.copy();
+        ItemStackTools.setStackSize(empty, 1);
+        IFluidHandler fluidHandler = FluidUtil.getFluidHandler(empty);
+        if (fluidHandler == null) {
+            return ItemStackTools.getEmptyStack();
+        }
+        if (fluidHandler.drain(Integer.MAX_VALUE, true) != null){
+            return empty;
+        }
+        return ItemStackTools.getEmptyStack();
+    }
+
+    /**
+     * Get the capacity (in mb) of the given container for the given fluid
+     */
+    public static int getCapacity(@Nonnull FluidStack fluidStack, @Nonnull ItemStack itemStack) {
+        IFluidHandler fluidHandler = FluidUtil.getFluidHandler(itemStack);
+        if (fluidHandler == null) {
+            return 0;
+        }
+        IFluidTankProperties[] tankProperties = fluidHandler.getTankProperties();
+        for (IFluidTankProperties properties : tankProperties) {
+            if (properties.canDrainFluidType(fluidStack)) {
+                return properties.getCapacity();
+            }
+        }
+        return 0;
+    }
+
 }
