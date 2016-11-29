@@ -6,9 +6,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.oredict.OreDictionary;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.List;
 
 public class ItemStackTools {
 
@@ -147,5 +149,13 @@ public class ItemStackTools {
             IInventory inventory = (IInventory) tileEntity;
             inventory.setInventorySlotContents(slot, stack);
         }
+    }
+
+    public static List<ItemStack> getOres(String name) {
+        return OreDictionary.getOres(name);
+    }
+
+    public static List<ItemStack> getOres(String name, boolean alwaysCreateEntry) {
+        return OreDictionary.getOres(name, alwaysCreateEntry);
     }
 }
