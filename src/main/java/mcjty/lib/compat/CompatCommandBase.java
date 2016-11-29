@@ -6,6 +6,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 
 import javax.annotation.Nullable;
+import java.util.Collections;
 import java.util.List;
 
 public abstract class CompatCommandBase extends CommandBase {
@@ -17,14 +18,18 @@ public abstract class CompatCommandBase extends CommandBase {
         return getName();
     }
 
-    abstract List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos pos);
+    public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos pos) {
+        return Collections.emptyList();
+    }
 
     @Override
     public List<String> getTabCompletionOptions(MinecraftServer server, ICommandSender sender, String[] args, BlockPos pos) {
         return getTabCompletions(server, sender, args, pos);
     }
 
-    abstract List<String> getAliases();
+    public List<String> getAliases() {
+        return Collections.emptyList();
+    }
 
     @Override
     public List<String> getCommandAliases() {
