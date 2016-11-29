@@ -86,6 +86,7 @@ public class FluidTools {
     }
 
     // Drain a fluid container and return an empty container
+    @Nonnull
     public static ItemStack drainContainer(@Nonnull ItemStack container) {
         ItemStack empty = container.copy();
         ItemStackTools.setStackSize(empty, 1);
@@ -97,6 +98,17 @@ public class FluidTools {
             return empty;
         }
         return ItemStackTools.getEmptyStack();
+    }
+
+    // Fill a container with a fluid and return the filled container
+    @Nonnull
+    public static ItemStack fillContainer(@Nonnull FluidStack fluidStack, @Nonnull ItemStack itemStack) {
+        IFluidHandlerItem fh = FluidUtil.getFluidHandler(itemStack.copy());
+        int filled = fh.fill(fluidStack, true);
+        if (filled == 0) {
+            return ItemStackTools.getEmptyStack();
+        }
+        return fh.getContainer();
     }
 
     /**
