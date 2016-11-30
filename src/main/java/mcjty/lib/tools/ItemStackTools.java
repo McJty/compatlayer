@@ -54,18 +54,6 @@ public class ItemStackTools {
     }
 
     /**
-     * 'Convert' to a safe value. This method exists so that you can ensure that
-     * static analysis in your program can catch null errors with ItemStacks. Use
-     * this on the result of methods in your program that can't be declared @Nonnull
-     * because you also want to compile that code in 1.10.
-     * The 1.10 version of this code returns a @Nullable ItemStack
-     */
-    @Nonnull
-    public static ItemStack safe(ItemStack stack) {
-        return stack;
-    }
-
-    /**
      * Check if this is a valid stack. Tests for null on 1.10.
      */
     public static boolean isValid(@Nonnull ItemStack stack) {
