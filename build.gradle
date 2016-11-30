@@ -54,7 +54,7 @@ minecraft {
 
 dependencies {
     deobfCompile "mcp.mobius.waila:Waila:1.7.0-B3_1.9.4"
-    deobfCompile "mezz.jei:jei_1.10.2:3.7.3.223"
+    deobfCompile "mezz.jei:jei_1.10.2:3.13.6.387"
     deobfCompile "mcjty.theoneprobe:TheOneProbe:1.10-1.0.12-25"
 }
 
