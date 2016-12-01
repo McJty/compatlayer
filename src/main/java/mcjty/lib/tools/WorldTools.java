@@ -22,6 +22,10 @@ public class WorldTools {
         world.neighborChanged(pos.offset(offset), block, pos);
     }
 
+    public static void notifyBlockOfStateChange(World world, BlockPos pos, Block block, BlockPos fromPos) {
+        world.neighborChanged(pos, block, fromPos);
+    }
+
     public static void notifyNeighborsOfStateChange(World world, BlockPos pos, Block block) {
         world.notifyNeighborsOfStateChange(pos, block, false);
     }
