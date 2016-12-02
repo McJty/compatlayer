@@ -43,10 +43,14 @@ public class ItemStackTools {
     /**
      * Set the stacksize on a stack. Returns the same stack or null if the new
      * amount was 0. On 1.11 it will return the 'null' itemstack
+     * Note that this will modify the stack also if amount == 0. On 1.10
+     * the stacksize will be set to 0 and on 1.11 the stack will become the EMPTY
+     * stack.
      */
     @Nonnull
     public static ItemStack setStackSize(@Nonnull ItemStack stack, int amount) {
         if (amount <= 0) {
+            stack.setCount(0);
             return ItemStack.EMPTY;
         }
         stack.setCount(amount);

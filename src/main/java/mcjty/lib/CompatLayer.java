@@ -2,7 +2,7 @@ package mcjty.lib;
 
 public class CompatLayer {
 
-    public static final String VERSION = "0.0.39beta";
+    public static final String VERSION = "0.0.40beta";
     public static final String OWNER = "McJty", PROVIDES = "compatlayer";
 
     public static boolean isV10() {
