@@ -15,6 +15,7 @@ public abstract class CompatWorldProvider extends WorldProvider {
 
     @Override
     protected void init() {
+        this.hasSkyLight = true;
         initialize();
     }
 }
