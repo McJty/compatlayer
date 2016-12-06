@@ -1,6 +1,7 @@
 package mcjty.lib.compat;
 
 import net.minecraft.command.CommandBase;
+import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
@@ -45,5 +46,9 @@ public abstract class CompatCommandBase extends CommandBase {
 
     public static boolean canUseCommand(ICommandSender sender, int permLevel, String name) {
         return sender.canCommandSenderUseCommand(permLevel, name);
+    }
+
+    public static String getCommandName(ICommand command) {
+        return command.getCommandName();
     }
 }
