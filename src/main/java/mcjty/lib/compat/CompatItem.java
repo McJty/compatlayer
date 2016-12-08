@@ -32,6 +32,15 @@ public class CompatItem extends Item {
         return super.onItemUse(player, world, pos, hand, facing, hitX, hitY, hitZ);
     }
 
+    @Override
+    public EnumActionResult onItemUseFirst(EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ, EnumHand hand) {
+        return clOnItemUseFirst(player, world, pos, side, hitX, hitY, hitZ, hand);
+    }
+
+    protected EnumActionResult clOnItemUseFirst(EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ, EnumHand hand) {
+        return super.onItemUseFirst(player, world, pos, side, hitX, hitY, hitZ, hand);
+    }
+
     @SideOnly(Side.CLIENT)
     @Override
     public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
