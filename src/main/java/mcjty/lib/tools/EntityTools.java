@@ -3,6 +3,7 @@ package mcjty.lib.tools;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.MoverType;
 import net.minecraft.entity.monster.EntityStray;
 import net.minecraft.entity.monster.EntityWitherSkeleton;
 import net.minecraft.nbt.NBTTagCompound;
@@ -135,6 +136,10 @@ public class EntityTools {
      */
     public static String findId(Class<? extends Entity> clazz, Entity entity) {
         return EntityList.getKey(clazz).toString();
+    }
+
+    public static void moveEntity(Entity entity, double x, double y, double z) {
+        entity.move(MoverType.SELF, x, y, z);
     }
 
     public static void registerModEntity(ResourceLocation resourceLocation, Class<? extends Entity> entityClass, String entityName, int id, Object mod, int trackingRange, int updateFrequency, boolean sendsVelocityUpdates) {
