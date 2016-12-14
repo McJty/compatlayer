@@ -1,5 +1,6 @@
 package mcjty.lib.tools;
 
+import com.google.common.collect.Lists;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
@@ -16,6 +17,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
+import java.util.Collections;
 import java.util.List;
 
 public class InventoryTools {
@@ -45,5 +47,14 @@ public class InventoryTools {
 
     public static List<ItemStack> getContainerItemStacks(Container container) {
         return container.inventoryItemStacks;
+    }
+
+    // Get a read-only list for the players inventory!
+    public static List<ItemStack> getMainInventory(EntityPlayer player) {
+        return Collections.unmodifiableList(player.inventory.mainInventory);
+    }
+
+    public static void setItemMainInventory(EntityPlayer player, int index, @Nonnull ItemStack item) {
+        player.inventory.mainInventory.set(index, item);
     }
 }
