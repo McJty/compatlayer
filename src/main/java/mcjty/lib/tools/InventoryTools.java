@@ -16,6 +16,9 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.Collections;
 import java.util.List;
 
 public class InventoryTools {
@@ -46,5 +49,14 @@ public class InventoryTools {
 
     public static List<ItemStack> getContainerItemStacks(Container container) {
         return container.inventoryItemStacks;
+    }
+
+    // Get a read-only list for the players inventory!
+    public static List<ItemStack> getMainInventory(EntityPlayer player) {
+        return Collections.unmodifiableList(Lists.newArrayList(player.inventory.mainInventory));
+    }
+
+    public static void setItemMainInventory(EntityPlayer player, int index, @Nullable ItemStack item) {
+        player.inventory.mainInventory[index] = item;
     }
 }
