@@ -90,12 +90,12 @@ public class FluidTools {
     public static ItemStack drainContainer(@Nonnull ItemStack container) {
         ItemStack empty = container.copy();
         ItemStackTools.setStackSize(empty, 1);
-        IFluidHandler fluidHandler = FluidUtil.getFluidHandler(empty);
+        IFluidHandlerItem fluidHandler = FluidUtil.getFluidHandler(empty);
         if (fluidHandler == null) {
             return ItemStackTools.getEmptyStack();
         }
         if (fluidHandler.drain(Integer.MAX_VALUE, true) != null){
-            return empty;
+            return fluidHandler.getContainer();
         }
         return ItemStackTools.getEmptyStack();
     }
