@@ -56,7 +56,7 @@ minecraft {
 dependencies {
     //deobfCompile "mcp.mobius.waila:Waila:1.7.0-B3_1.9.4"
     deobfCompile "mezz.jei:jei_1.11:4.0.0.188"
-    deobfCompile "mcjty.theoneprobe:TheOneProbe:1.10-1.0.12-25"
+    deobfCompile "mcjty.theoneprobe:TheOneProbe:1.11-1.3.4-47"
 }
 
 task deobfJar(type: Jar) {
