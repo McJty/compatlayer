@@ -34,7 +34,7 @@ repositories {
     }
 }
 
-version = "1.11-0.1.5"
+version = "1.11-0.1.6"
 def ENV = System.getenv()
 if (ENV.DRONE_BUILD_NUMBER) {
     version += ".n" + ENV.DRONE_BUILD_NUMBER
@@ -47,7 +47,7 @@ targetCompatibility = 1.8
 
 
 minecraft {
-    version = "1.11-13.19.1.2199"
+    version = "1.11.2-13.20.0.2201"
     runDir = "run"
     mappings = "snapshot_20161227"
     useDepAts = true
