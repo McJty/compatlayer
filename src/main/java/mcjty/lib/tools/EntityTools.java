@@ -7,6 +7,8 @@ import net.minecraft.entity.MoverType;
 import net.minecraft.entity.monster.EntityStray;
 import net.minecraft.entity.monster.EntityWitherSkeleton;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.MobSpawnerBaseLogic;
+import net.minecraft.tileentity.TileEntityMobSpawner;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.datafix.fixes.EntityId;
 import net.minecraft.util.text.translation.I18n;
@@ -15,6 +17,7 @@ import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
+import javax.annotation.Nonnull;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.stream.Stream;
@@ -141,6 +144,19 @@ public class EntityTools {
     public static void moveEntity(Entity entity, double x, double y, double z) {
         entity.move(MoverType.SELF, x, y, z);
     }
+
+    /**
+     * Set the type of mob on a spawner. The 1.10 version uses entityName. The 1.11 version uses the resource location
+     * @param resourceLocation
+     * @param entityName
+     */
+    public static void setSpawnerEntity(@Nonnull World world, @Nonnull TileEntityMobSpawner spawner, @Nonnull ResourceLocation resourceLocation, @Nonnull String entityName) {
+        MobSpawnerBaseLogic mobspawnerbaselogic = spawner.getSpawnerBaseLogic();
+        mobspawnerbaselogic.setEntityId(resourceLocation);
+        spawner.markDirty();
+    }
+
+
 
     public static void registerModEntity(ResourceLocation resourceLocation, Class<? extends Entity> entityClass, String entityName, int id, Object mod, int trackingRange, int updateFrequency, boolean sendsVelocityUpdates) {
         EntityRegistry.registerModEntity(resourceLocation, entityClass, entityName, id, mod, trackingRange, updateFrequency, sendsVelocityUpdates);
