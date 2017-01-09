@@ -6,11 +6,14 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.SkeletonType;
+import net.minecraft.tileentity.MobSpawnerBaseLogic;
+import net.minecraft.tileentity.TileEntityMobSpawner;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
+import javax.annotation.Nonnull;
 import java.lang.reflect.InvocationTargetException;
 import java.util.stream.Stream;
 
@@ -137,6 +140,17 @@ public class EntityTools {
             }
         }
         return EntityList.CLASS_TO_NAME.get(clazz);
+    }
+
+    /**
+     * Set the type of mob on a spawner. The 1.10 version uses entityName. The 1.11 version uses the resource location
+     * @param resourceLocation
+     * @param entityName
+     */
+    public static void setSpawnerEntity(@Nonnull World world, @Nonnull TileEntityMobSpawner spawner, @Nonnull ResourceLocation resourceLocation, @Nonnull String entityName) {
+        MobSpawnerBaseLogic mobspawnerbaselogic = spawner.getSpawnerBaseLogic();
+        mobspawnerbaselogic.setEntityName(entityName);
+        spawner.markDirty();
     }
 
     public static void moveEntity(Entity entity, double x, double y, double z) {
