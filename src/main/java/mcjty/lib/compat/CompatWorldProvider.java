@@ -18,4 +18,9 @@ public abstract class CompatWorldProvider extends WorldProvider {
         this.hasSkyLight = true;
         initialize();
     }
+
+    // No-op on 1.10.2
+    public void disableSkyLight() {
+        this.hasSkyLight = false;
+    }
 }
