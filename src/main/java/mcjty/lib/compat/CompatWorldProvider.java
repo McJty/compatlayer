@@ -17,4 +17,9 @@ public abstract class CompatWorldProvider extends WorldProvider {
     protected void createBiomeProvider() {
         initialize();
     }
+
+    // No-op on 1.10.2
+    public void disableSkyLight() {
+
+    }
 }
