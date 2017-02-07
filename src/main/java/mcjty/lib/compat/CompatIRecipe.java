@@ -3,41 +3,46 @@
 */
 package mcjty.lib.compat;
 
+import mcjty.lib.tools.ItemStackList;
 import mcjty.lib.tools.ItemStackTools;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 
-public class CompatIRecipe implements IRecipe {
+import javax.annotation.Nonnull;
+
+public interface CompatIRecipe extends IRecipe {
 
 	@Override
-	public boolean matches(InventoryCrafting inv, World worldIn) {
+	default boolean matches(InventoryCrafting inv, World worldIn) {
 		return false;
 	}
 
 	@Override
-	public ItemStack getCraftingResult(InventoryCrafting inv) {
+	default ItemStack getCraftingResult(InventoryCrafting inv) {
 		return ItemStackTools.getEmptyStack();
 	}
 
 	@Override
-	public int getRecipeSize() {
+	default int getRecipeSize() {
 		return 0;
 	}
 
 	@Override
-	public ItemStack getRecipeOutput() {
+	default ItemStack getRecipeOutput() {
 		return ItemStackTools.getEmptyStack();
 	}
 
 	@Override
-	public ItemStack[] getRemainingItems(InventoryCrafting inv) {
-		return getRemainingItemsCompat(inv);
+	default ItemStack[] getRemainingItems(InventoryCrafting inv) {
+		ItemStackList items = getRemainingItemsCompat(inv);
+		return items.toArray(new ItemStack[items.size()]);
 	}
-	
-	public ItemStack[] getRemainingItemsCompat(InventoryCrafting inv) {
-		return new ItemStack[1];
+
+	@Nonnull
+	default ItemStackList getRemainingItemsCompat(InventoryCrafting inv) {
+		return ItemStackList.EMPTY;
 	}
 
 }
