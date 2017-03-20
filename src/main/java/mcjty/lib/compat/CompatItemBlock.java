@@ -25,6 +25,15 @@ public class CompatItemBlock extends ItemBlock {
         return super.onItemRightClick(playerIn.getHeldItem(hand), worldIn, playerIn, hand);
     }
 
+    protected void clAddInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+        super.addInformation(stack, playerIn, tooltip, advanced);
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+        clAddInformation(stack, playerIn, tooltip, advanced);
+    }
+
     @Override
     public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
         return clOnItemRightClick(worldIn, playerIn, hand);

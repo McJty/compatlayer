@@ -28,6 +28,15 @@ public class CompatItemFood extends ItemFood {
         super(amount, isWolfFood);
     }
 
+    protected void clAddInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+        super.addInformation(stack, playerIn, tooltip, advanced);
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+        clAddInformation(stack, playerIn, tooltip, advanced);
+    }
+
     protected ActionResult<ItemStack> clOnItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand) {
         return super.onItemRightClick(playerIn.getHeldItem(hand), worldIn, playerIn, hand);
     }
