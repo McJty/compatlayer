@@ -33,6 +33,16 @@ public class CompatBlock extends Block {
         super(materialIn);
     }
 
+    public void clAddInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+        super.addInformation(stack, playerIn, tooltip, advanced);
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+        clAddInformation(stack, playerIn, tooltip, advanced);
+    }
+
+
     protected void clAddCollisionBoxToList(IBlockState state, World world, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> list, Entity entity) {
         super.addCollisionBoxToList(state, world, pos, entityBox, list, entity);
     }
