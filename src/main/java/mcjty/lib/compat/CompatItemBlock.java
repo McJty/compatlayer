@@ -18,7 +18,7 @@ public class CompatItemBlock extends ItemBlock {
         super(block);
     }
 
-    protected void clAddInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+    public void clAddInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, playerIn, tooltip, advanced);
     }
 
