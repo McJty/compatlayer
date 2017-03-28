@@ -20,7 +20,7 @@ public class WorldTools {
     }
 
     public static WorldClient getWorld(Minecraft mc) {
-        return mc.theWorld;
+        return mc.world;
     }
 
     public static void neighborChanged(World world, EnumFacing offset, Block block, BlockPos pos) {

@@ -24,7 +24,7 @@ import java.util.List;
 public class InventoryTools {
 
     public static boolean isUsable(EntityPlayer player, IInventory inventory) {
-        return inventory.isUseableByPlayer(player);
+        return inventory.isUsableByPlayer(player);
     }
 
     public static ItemStack onPickup(Slot slot, EntityPlayer player, ItemStack stack) {
