@@ -8,10 +8,10 @@ import java.io.IOException;
 public class PacketBufferTools {
 
     public static NBTTagCompound readCompoundTag(PacketBuffer buf) throws IOException {
-        return buf.readNBTTagCompoundFromBuffer();
+        return buf.readCompoundTag();
     }
 
     public static void writeCompoundTag(PacketBuffer buf, NBTTagCompound tag) {
-        buf.writeNBTTagCompoundToBuffer(tag);
+        buf.writeCompoundTag(tag);
     }
 }

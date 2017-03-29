@@ -16,7 +16,7 @@ import java.util.List;
 public class WorldTools {
 
     public static void spawnEntity(World world, Entity entity) {
-        world.spawnEntityInWorld(entity);
+        world.spawnEntity(entity);
     }
 
     public static WorldClient getWorld(Minecraft mc) {
@@ -36,14 +36,14 @@ public class WorldTools {
     }
 
     public static List<EntityPlayerMP> getPlayerList(WorldServer world) {
-        return world.getMinecraftServer().getPlayerList().getPlayerList();
+        return world.getMinecraftServer().getPlayerList().getPlayers();
     }
 
     public static <T extends WorldSavedData> T loadData(World world, Class<? extends T> clazz, String dataID) {
-        return (T) world.loadItemData(clazz, dataID);
+        return (T) world.loadData(clazz, dataID);
     }
 
     public static <T extends WorldSavedData> void saveData(World world, String dataID, T data) {
-        world.setItemData(dataID, data);
+        world.setData(dataID, data);
     }
 }

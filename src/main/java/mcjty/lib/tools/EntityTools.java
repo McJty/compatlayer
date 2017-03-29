@@ -154,7 +154,7 @@ public class EntityTools {
     }
 
     public static void moveEntity(Entity entity, double x, double y, double z) {
-        entity.moveEntity(x, y, z);
+        entity.move(x, y, z);
     }
 
     public static void registerModEntity(ResourceLocation resourceLocation, Class<? extends Entity> entityClass, String entityName, int id, Object mod, int trackingRange, int updateFrequency, boolean sendsVelocityUpdates) {

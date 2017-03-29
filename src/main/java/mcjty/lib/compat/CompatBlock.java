@@ -71,11 +71,11 @@ public class CompatBlock extends Block {
     }
 
     protected IBlockState clGetStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-        return super.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer);
+        return super.getStateForPlacement(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer);
     }
 
     @Override
-    public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
         return clGetStateForPlacement(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer);
     }
 
@@ -95,6 +95,6 @@ public class CompatBlock extends Block {
     }
 
     public static Collection<IProperty<?>> getPropertyKeys(IBlockState state) {
-        return state.getPropertyNames();
+        return state.getPropertyKeys();
     }
 }

@@ -6,7 +6,7 @@ import net.minecraft.world.WorldProvider;
 public abstract class CompatWorldProvider extends WorldProvider {
 
     public World getWorld() {
-        return worldObj;
+        return world;
     }
 
     protected void initialize() {

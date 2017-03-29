@@ -22,18 +22,18 @@ public class CompatSlot extends Slot {
     }
 
     public static int getX(Slot slot) {
-        return slot.xDisplayPosition;
+        return slot.xPos;
     }
 
     public static int getY(Slot slot) {
-        return slot.yDisplayPosition;
+        return slot.yPos;
     }
 
     public static void setX(Slot slot, int x) {
-        slot.xDisplayPosition = x;
+        slot.xPos = x;
     }
 
     public static void setY(Slot slot, int y) {
-        slot.yDisplayPosition = y;
+        slot.yPos = y;
     }
 }

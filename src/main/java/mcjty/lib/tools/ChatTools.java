@@ -10,9 +10,10 @@ public class ChatTools {
 
     public static void addChatMessage(@Nonnull ICommandSender sender, @Nonnull ITextComponent component) {
         if (sender instanceof EntityPlayer) {
-            ((EntityPlayer) sender).addChatComponentMessage(component);
+            EntityPlayer p;
+            ((EntityPlayer) sender).sendStatusMessage(component);
         } else {
-            sender.addChatMessage(component);
+            sender.sendMessage(component);
         }
     }
 

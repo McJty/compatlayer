@@ -14,21 +14,21 @@ public class CompatParticle extends Particle {
     }
 
     public AxisAlignedBB clGetBoundingBox() {
-        return super.getEntityBoundingBox();
+        return super.getBoundingBox();
     }
 
 
     @Override
-    public AxisAlignedBB getEntityBoundingBox() {
+    public AxisAlignedBB getBoundingBox() {
         return clGetBoundingBox();
     }
 
     public void clSetBoundingBox(AxisAlignedBB bb) {
-        super.setEntityBoundingBox(bb);
+        super.setBoundingBox(bb);
     }
 
     @Override
-    public void setEntityBoundingBox(AxisAlignedBB bb) {
+    public void setBoundingBox(AxisAlignedBB bb) {
         clSetBoundingBox(bb);
     }
 }
