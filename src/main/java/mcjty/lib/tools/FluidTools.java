@@ -94,7 +94,7 @@ public class FluidTools {
             return FluidContainerRegistry.drainFluidContainer(container);
         }
         if (fluidHandler.drain(Integer.MAX_VALUE, true) != null){
-            return FluidUtil.tryEmptyContainer(container, fluidHandler, Fluid.BUCKET_VOLUME, null, true);
+            return FluidUtil.tryEmptyContainer(container, fluidHandler, Integer.MAX_VALUE, null, true);
         }
         return ItemStackTools.getEmptyStack();
     }
