@@ -33,6 +33,6 @@ public class CompatParticle extends Particle {
     }
 	
 	public void clMoveParticle(double x, double y, double z) {
-		moveEntity(x,y,z):
+		moveEntity(x,y,z);
 	}
 }
