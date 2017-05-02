@@ -31,8 +31,4 @@ public class CompatParticle extends Particle {
     public void setBoundingBox(AxisAlignedBB bb) {
         clSetBoundingBox(bb);
     }
-	
-	public void clMoveParticle(double x, double y, double z) {
-		moveEntity(x,y,z);
-	}
 }
