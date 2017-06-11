@@ -6,9 +6,8 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldSavedData;
 import net.minecraft.world.WorldServer;
-import net.minecraft.world.gen.MapGenBase;
+import net.minecraft.world.storage.WorldSavedData;
 
 import java.util.List;
 

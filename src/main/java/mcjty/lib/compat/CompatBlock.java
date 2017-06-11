@@ -5,6 +5,7 @@ import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -35,12 +36,12 @@ public class CompatBlock extends Block {
     }
 
     public void clAddInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-        super.addInformation(stack, playerIn, tooltip, advanced);
+        super.addInformation(stack, null, tooltip, null);
     }
 
     @Override
-    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-        clAddInformation(stack, playerIn, tooltip, advanced);
+    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) {
+        clAddInformation(stack, null, tooltip, false);  // @todo WRONG
     }
 
 
@@ -82,13 +83,13 @@ public class CompatBlock extends Block {
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void getSubBlocks(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
-        clGetSubBlocks(itemIn, tab, subItems);
+    public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> tab) {
+        clGetSubBlocks(Item.getItemFromBlock(this), itemIn, tab);
     }
 
     @SideOnly(Side.CLIENT)
     protected void clGetSubBlocks(Item itemIn, CreativeTabs tab, List<ItemStack> subItems) {
-        super.getSubBlocks(itemIn, tab, (NonNullList<ItemStack>) subItems);
+        super.getSubBlocks(tab, (NonNullList<ItemStack>) subItems);
     }
 
     public static boolean activateBlock(Block block, World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {

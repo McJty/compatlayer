@@ -26,11 +26,6 @@ public interface CompatIRecipe extends IRecipe {
 	}
 
 	@Override
-	default int getRecipeSize() {
-		return 0;
-	}
-
-	@Override
 	default ItemStack getRecipeOutput() {
 		return ItemStackTools.getEmptyStack();
 	}

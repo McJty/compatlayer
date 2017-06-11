@@ -42,7 +42,7 @@ public class InventoryTools {
     }
 
     public static List<ItemStack> getRemainingItems(InventoryCrafting workInventory, World world) {
-        return CraftingManager.getInstance().getRemainingItems(workInventory, world);
+        return CraftingManager.getRemainingItems(workInventory, world);
     }
 
     public static List<ItemStack> getContainerItemStacks(Container container) {

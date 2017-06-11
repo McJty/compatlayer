@@ -1,5 +1,6 @@
 package mcjty.lib.compat;
 
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -10,17 +11,19 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 public class CompatItem extends Item {
 
     public void clAddInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-        super.addInformation(stack, playerIn, tooltip, advanced);
+        super.addInformation(stack, null, tooltip, null);
     }
 
     @Override
-    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-        clAddInformation(stack, playerIn, tooltip, advanced);
+    public void addInformation(ItemStack stack, @Nullable World playerIn, List<String> tooltip, ITooltipFlag advanced) {
+        // @todo wrong!!!
+        clAddInformation(stack, null, tooltip, advanced == null ? false : advanced.func_194127_a());
     }
 
     protected ActionResult<ItemStack> clOnItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand) {
@@ -52,12 +55,12 @@ public class CompatItem extends Item {
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
-        clGetSubItems(itemIn, tab, subItems);
+    public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems) {
+        clGetSubItems(this, tab, subItems);
     }
 
     @SideOnly(Side.CLIENT)
     protected void clGetSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems) {
-        super.getSubItems(itemIn, tab, (NonNullList<ItemStack>) subItems);
+        super.getSubItems(tab, (NonNullList<ItemStack>) subItems);
     }
 }
