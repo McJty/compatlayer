@@ -23,7 +23,7 @@ public class CompatItem extends Item {
     @Override
     public void addInformation(ItemStack stack, @Nullable World playerIn, List<String> tooltip, ITooltipFlag advanced) {
         // @todo wrong!!!
-        clAddInformation(stack, null, tooltip, advanced == null ? false : advanced.func_194127_a());
+        clAddInformation(stack, null, tooltip, advanced == null ? false : advanced.isAdvanced());
     }
 
     protected ActionResult<ItemStack> clOnItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand) {

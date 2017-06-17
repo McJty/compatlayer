@@ -12,12 +12,12 @@ public abstract class CompatMapGenStructure extends MapGenStructure {
 
 
     @Nullable
-    @Override
     public BlockPos getClosestStrongholdPos(World worldIn, BlockPos pos, boolean findUnexplored) {
         return clGetClosestStrongholdPos(worldIn, pos);
     }
 
     public static BlockPos getClosestStrongholdPos(MapGenStructure structure, World worldIn, BlockPos pos) {
-        return structure.getClosestStrongholdPos(worldIn, pos, false);
+//        return structure.getClosestStrongholdPos(worldIn, pos, false);
+        return null;
     }
 }
