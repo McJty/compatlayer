@@ -3,6 +3,8 @@ package mcjty.lib;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod(modid = CompatLayer.PROVIDES, name = "CompatLayer",
+        dependencies =
+                        "after:EnderIO",
         acceptedMinecraftVersions = "[1.10,1.11)",
         version = CompatLayer.VERSION)
 public class CompatLayer {
